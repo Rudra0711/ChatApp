@@ -16,9 +16,9 @@ var io=socketIo(server);
 io.on('connection',(socket) => {
   console.log('New User Connected');
 
-  socket.emit('firstMsg',message('Server','Welcome..!!'));
+  //socket.emit('firstMsg',message('Admin','Welcome..!!'));
 
-  socket.broadcast.emit('firstMsg',message('Server','A new user has joined'));
+  //socket.broadcast.emit('firstMsg',message('Admin','A new user has joined'));
 
   socket.on('msgCreated',function (messageCreated) {
 
@@ -40,7 +40,12 @@ io.on('connection',(socket) => {
     if (!isString(params.user) || !isString(params.room)) {
         callback('Username or Room name is empty!\nJoining in failed');
     }
-    callback();
+
+    socket.join(params.room);
+
+    socket.emit('iojoin',message('Admin',`Welcome to '${params.room}' room`));
+    socket.broadcast.to(params.room).emit('bdcstjoin',message('Admin',`${params.user} has joined us.`));
+      callback();
   });
 
   socket.on('disconnect',() => {

@@ -5,10 +5,11 @@
     socket.on('connect', function()  {
     console.log('Connected to server');
 
-    socket.on('firstMsg',function (firstMsg) {
-    console.log('New Message from server : ',firstMsg);
-
-    displayMsg(firstMsg.from,firstMsg.message);
+    // socket.on('firstMsg',function (firstMsg) {
+    // console.log('New Message from server : ',firstMsg);
+    //
+    // displayMsg(firstMsg.from,firstMsg.message);
+    //   });
 
     var params=jQuery.deparam(window.location.search);
     socket.emit('join',params,(err) => {
@@ -17,9 +18,17 @@
         window.location.href="/";
       }else {
           console.log("No error, successfully joined in.");
+
+
       }
     });
 
+    socket.on('iojoin',(msg) => {
+      displayMsg(msg.from,msg.message);
+    });
+
+    socket.on('bdcstjoin',(msg) => {
+      displayMsg(msg.from,msg.message);
     });
 
     var displayMsg=function (from,message) {
