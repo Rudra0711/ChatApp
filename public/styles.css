@@ -1,0 +1,97 @@
+#titlePane{
+  padding-left: 6px;
+  margin-left: 15px;
+}
+
+.leftPane{
+  /* position: absolute;
+  top: 0px;
+  left:0px;
+  min-height: 1000px; */
+  /* min-height: 1000px; */
+  height: 100vh;
+  width: 250px;
+  color: white;
+  background-color: #08d187;
+   position:relative;
+  float: left;
+
+}
+
+.messages{
+  border: 1px black solid;
+  border-radius: 15px;
+  float:left;
+  position: relative;
+  top:4px;
+  left: 18px;
+  min-height: 10px;
+  width:500px;
+  margin-right: 100px;
+  margin-bottom: 10px;
+}
+
+#from{
+
+  color:black;
+  margin-left: 16px;
+  margin-top: 12px;
+  font-weight: 100;
+  font-size: 16px;
+  font-family: cursive;
+
+}
+
+#message{
+  color:#08d187;
+  margin-left: 18px;
+  font-size: 15px;
+  font-weight: bolder;
+  font-family: monospace;
+}
+
+.onlineUsers:hover{
+  font-size: 250%;
+}
+
+.form{
+  position: fixed;
+  top:640px;
+  left: 265px;
+  bottom:5px;
+}
+
+.send{
+  float: right;
+  position: relative;
+  left:10px;
+}
+
+#sendMsg{
+  background-image: url("./send.png");
+  background-color: white;
+  width: 29px;
+  height:29px;
+}
+
+#sendLocation{
+  background-image: url("./marker.png");
+  background-color: white;
+  width: 32px;
+  height:31px;
+}
+
+#textbox{
+
+  width: 995px;
+  height: 18px;
+  padding: 4px;=
+}
+
+#location{
+  font-weight: bold;
+}
+
+#location:hover{
+  color:#08d187;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <style type="text/css">
+       body{
+          background-color: #07ab72;
+          background: linear-gradient(to bottom right,white,#07ab72)
+        }
+        .first{
+          height: 250px;
+          width: 300px;
+          background:white;
+          position:absolute;
+          top:50%;
+          left:50%;
+          transform: translate(-50%,-50%);
+          padding:15px;
+          border-radius: 15px;
+        }
+        #btn{
+          background-color:#07df90;
+          padding:6px;
+          width:205px;
+          color:white;
+          font-weight: bolder;
+          font-family: monospace;
+          font-size: 18px;
+          border-radius: 6px;
+          margin-top: 17px;
+          margin-left: 45px;
+        }
+        #names{
+          height:20px;
+          width:265px;
+          border-radius: 4px;
+          padding:6px;
+          margin-top: 4px;
+          margin-left: 15px;
+        }
+        #sub{
+          font-family: monospace;
+          font-size: 17px;
+          margin-bottom: 0px;
+          margin-top: 12px;
+        }
+    </style>
+
+  </head>
+  <body>
+    <div class="first" >
+    <form action="/chat.html" >
+        <h1 style="margin-bottom: 18px;margin-top: 5px;margin-left: 75px;color:#06c680">Join Room</h1>
+        <p id="sub">User name</p>
+        <input id="names" type="text" placeholder="Your display name" >
+        <p id="sub">Room name</p>
+        <input id="names" type="text" placeholder="The room you wanna join" >
+        <button id="btn" >JOIN</button>
+
+    </form>
+    </div>
+
+  </body>
+</html>

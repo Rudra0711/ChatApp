@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet"  href="./styles.css">
+    <title>Index Page</title>
+  </head>
+  <body>
+
+
+  <div class="leftPane">
+      <div id="titlePane">
+        <h2>Active users : </h2>
+      </div>
+
+      <ul>
+        <li class="onlineUsers">Rudraksh</li>
+        <li class="onlineUsers">Harsh</li>
+        <li class="onlineUsers">Giri</li>
+        <li class="onlineUsers">Rishab</li>
+        <li class="onlineUsers">Nimish</li>
+        <li class="onlineUsers">Garv</li>
+      </ul>
+
+  </div>
+
+  <ul id="messages"> </ul>
+
+
+    <div class="form">
+
+      <form id="msg-form">
+
+        <input id="textbox" type="text" name="message" placeholder="Enter your message here : "/>
+        <div class="send">
+          <button id="sendMsg"></button>
+          <button id="sendLocation"></button>
+        </div>
+      </form>
+    </div>
+
+<!--RECEIVED AFTER SETTING THE SERVER-->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/libs/jquery-3.3.1.min.js"></script>
+    <script src="/js/chat.js">  </script>
+
+<script type="text/javascript">
+
+$('#textbox').click(function () {
+//  alert('Text changed');
+if (this.value==='') {
+    document.getElementById('sendMsg').disabled=true;
+}else {
+  document.getElementById('sendMsg').disabled=false;
+}
+});
+
+document.getElementById("textbox").addEventListener('input', function (evt) {
+
+    if (this.value==='') {
+
+        document.getElementById('sendMsg').disabled=true;
+        $('#sendMsg').css("text-decoration","overline");
+    }else{
+      document.getElementById('sendMsg').disabled=false;
+    }
+
+});
+
+</script>
+
+  </body>
+</html>
