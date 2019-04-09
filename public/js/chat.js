@@ -10,6 +10,16 @@
 
     displayMsg(firstMsg.from,firstMsg.message);
 
+    var params=jQuery.deparam(window.location.search);
+    socket.emit('join',params,(err) => {
+      if (err) {
+        alert(err);
+        window.location.href="/";
+      }else {
+          console.log("No error, successfully joined in.");
+      }
+    });
+
     });
 
     var displayMsg=function (from,message) {
@@ -84,7 +94,7 @@
 
   });
 
-  jQuery('#sendLocation').on('click',function (e) {
+   jQuery('#sendLocation').on('click',function (e) {
 
     e.preventDefault();
 

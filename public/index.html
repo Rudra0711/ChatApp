@@ -47,20 +47,20 @@
           margin-top: 12px;
         }
     </style>
-
   </head>
   <body>
-    <div class="first" >
-    <form action="/chat.html" >
+
+    <form action="/chat.html" method="get">
+      <div class="first" >
         <h1 style="margin-bottom: 18px;margin-top: 5px;margin-left: 75px;color:#06c680">Join Room</h1>
         <p id="sub">User name</p>
-        <input id="names" type="text" placeholder="Your display name" >
+        <input id="names" name="user" type="text" placeholder="Your display name" >
         <p id="sub">Room name</p>
-        <input id="names" type="text" placeholder="The room you wanna join" >
+        <input id="names" type="text" name="room" placeholder="The room you wanna join" >
         <button id="btn" >JOIN</button>
-
+      </div>
     </form>
-    </div>
+
 
   </body>
 </html>

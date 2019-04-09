@@ -36,6 +36,13 @@ io.on('connection',(socket) => {
       longitude:position.longitude});
   });
 
+  socket.on('join',(params,callback) => {
+    if (!isString(params.user) || !isString(params.room)) {
+        callback('Username or Room name is empty!\nJoining in failed');
+    }
+    callback();
+  });
+
   socket.on('disconnect',() => {
     console.log('User Disconnected');
   });
@@ -49,7 +56,9 @@ return  {
   };
 };
 
-
+var isString=(str) => {
+  return typeof str === 'string' && str.trim().length>0;
+};
 
 app.use(express.static(__dirname+'/../public'));
 
