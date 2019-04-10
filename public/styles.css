@@ -1,46 +1,48 @@
 #titlePane{
-  padding-left: 6px;
-  margin-left: 15px;
+  padding-left: 2vh;
+  margin-left: 2vh;
+  font-size: 3vh;
 }
 
 .leftPane{
   height: 100vh;
-  width: 250px;
+  width: 35vh;
   color: white;
   background-color: #08d187;
   position:relative;
   float: left;
-
+  border-radius: 12vh;
 }
 
 .messages{
-  border: 1px black solid;
-  border-radius: 15px;
+  border: 0.1vh black solid;
+  border-radius: 3vh;
   float:left;
   position: relative;
-  top:4px;
-  left: 18px;
-  min-height: 10px;
-  width:500px;
-  margin-right: 100px;
-  margin-bottom: 10px;
+  top:2vh;
+  left: 3vh;
+  min-height: 5vh;
+  width:65vh;
+  margin-right: 75vh;
+  margin-bottom: 2vh;
 }
 
 #from{
 
   color:black;
-  margin-left: 16px;
-  margin-top: 12px;
+  margin-left: 3vh;
+  margin-top: 2.5vh;
   font-weight: 100;
-  font-size: 16px;
+  font-size: 2.5vh;
   font-family: cursive;
 
 }
 
 #message{
   color:#08d187;
-  margin-left: 18px;
-  font-size: 15px;
+  margin-top: 1.5vh;
+  margin-left: 4vh;
+  font-size: 2.2vh;
   font-weight: bolder;
   font-family: monospace;
 }
@@ -50,37 +52,37 @@
 }
 
 .form{
-  position: fixed;
-  top:640px;
-  left: 265px;
-  bottom:5px;
+  position: relative;
+  top:74vh;
+  left:3vh;
+  bottom:2.5vh;
 }
 
 .send{
   float: right;
   position: relative;
-  left:10px;
+  left:-3vh;
+  bottom: 0.3vh;
 }
 
 #sendMsg{
   background-image: url("./send.png");
   background-color: white;
-  width: 29px;
-  height:29px;
+  width: 4.1vh;
+  height:4.1vh;
 }
 
 #sendLocation{
   background-image: url("./marker.png");
   background-color: white;
-  width: 32px;
-  height:31px;
+  width: 4.3vh;
+  height:4.2vh;
 }
 
 #textbox{
-
-  width: 985px;
-  height: 18px;
-  padding: 4px;=
+  width: 142vh;
+  height: 3vh;
+  padding: 0.3vh;
 }
 
 #location{
