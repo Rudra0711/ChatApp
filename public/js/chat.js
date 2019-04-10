@@ -5,12 +5,6 @@
     socket.on('connect', function()  {
     console.log('Connected to server');
 
-    // socket.on('firstMsg',function (firstMsg) {
-    // console.log('New Message from server : ',firstMsg);
-    //
-    // displayMsg(firstMsg.from,firstMsg.message);
-    //   });
-
     var params=jQuery.deparam(window.location.search);
 
     socket.emit('join',params,(err,users,room) => {
@@ -96,12 +90,12 @@
    jQuery('#msg-form').on('submit',function (e) {
     e.preventDefault();
 
-    var room=jQuery('[id=roomH]').html();
+    var params=jQuery.deparam(window.location.search);
 
     socket.emit('msgCreated',{
-      from:'Client',
+      from:params.user,
       message: jQuery('[name=message]').val(),
-      room:room
+      room:params.room
     });
 
     $('#textbox').val('');
@@ -129,10 +123,13 @@
     }
 
     navigator.geolocation.getCurrentPosition(function (position) {
+      var params=jQuery.deparam(window.location.search);
 
     socket.emit('location',{
       latitude:position.coords.latitude,
-      longitude:position.coords.longitude
+      longitude:position.coords.longitude,
+      user:params.user,
+      room:params.room
     })
   },function () {
     alert('Unable to fetch your location');

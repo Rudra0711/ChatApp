@@ -25,14 +25,14 @@ io.on('connection',(socket) => {
 
   socket.on('msgCreated',function (messageCreated) {
 
-    socket.broadcast.to(messageCreated.room).emit('newMsg',message(`${messageCreated.from}`,`${messageCreated.message}`));
+    io.to(messageCreated.room).emit('newMsg',message(`${messageCreated.from}`,`${messageCreated.message}`));
 
   });
 
   socket.on('location',function (position) {
 
-    socket.broadcast.emit('locationMsg',{
-      from:'User',
+    io.to(position.room).emit('locationMsg',{
+      from:position.user,
       latitude:position.latitude,
       longitude:position.longitude});
   });
@@ -42,7 +42,9 @@ io.on('connection',(socket) => {
         callback('Username or Room name is empty!\nJoining in failed');
     }
 
-    obj.addUser(obj.users.length+1,params.user,params.room);
+
+
+    obj.addUser(socket.id,params.user,params.room);
 
     socket.join(params.room);
 
