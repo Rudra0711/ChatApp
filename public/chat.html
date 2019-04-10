@@ -11,16 +11,11 @@
 
   <div class="leftPane">
       <div id="titlePane">
-        <h2>Active users : </h2>
+        
       </div>
 
-      <ul>
-        <li class="onlineUsers">Rudraksh</li>
-        <li class="onlineUsers">Harsh</li>
-        <li class="onlineUsers">Giri</li>
-        <li class="onlineUsers">Rishab</li>
-        <li class="onlineUsers">Nimish</li>
-        <li class="onlineUsers">Garv</li>
+      <ul class="listusers">
+
       </ul>
 
   </div>
@@ -47,6 +42,13 @@
     <script src="/js/deparam.js"></script>
 
 <script type="text/javascript">
+
+var params=jQuery.deparam(window.location.search);
+
+  if (params.length<1) {
+    alert('Authorisation error!');
+    window.location.href="/";
+  }
 
 $('#textbox').click(function () {
 //  alert('Text changed');

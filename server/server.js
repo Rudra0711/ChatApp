@@ -3,6 +3,9 @@ const socketIo = require('socket.io');
 const http = require('http');
 const lodash = require('lodash');
 
+const {roomData}=require('../public/roomData.js');
+var obj=new roomData();
+
 const port=process.env.PORT || 3000;
 
 const app=express();
@@ -22,9 +25,7 @@ io.on('connection',(socket) => {
 
   socket.on('msgCreated',function (messageCreated) {
 
-    console.log('Message created : ',messageCreated);
-
-    socket.broadcast.emit('newMsg',message(`${messageCreated.from}`,`${messageCreated.message}`));
+    socket.broadcast.to(messageCreated.room).emit('newMsg',message(`${messageCreated.from}`,`${messageCreated.message}`));
 
   });
 
@@ -41,11 +42,13 @@ io.on('connection',(socket) => {
         callback('Username or Room name is empty!\nJoining in failed');
     }
 
+    obj.addUser(obj.users.length+1,params.user,params.room);
+
     socket.join(params.room);
 
     socket.emit('iojoin',message('Admin',`Welcome to '${params.room}' room`));
-    socket.broadcast.to(params.room).emit('bdcstjoin',message('Admin',`${params.user} has joined us.`));
-      callback();
+    socket.broadcast.to(params.room).emit('bdcstjoin',message('Admin',`${params.user} has joined us.`),params.user);
+      callback('',obj.getUserList(params.room),params.room);
   });
 
   socket.on('disconnect',() => {

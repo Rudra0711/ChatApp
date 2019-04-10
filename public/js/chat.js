@@ -12,14 +12,20 @@
     //   });
 
     var params=jQuery.deparam(window.location.search);
-    socket.emit('join',params,(err) => {
-      if (err) {
+
+    socket.emit('join',params,(err,users,room) => {
+      if (err && err.length>0) {
         alert(err);
         window.location.href="/";
       }else {
-          console.log("No error, successfully joined in.");
-
-
+        for (var user in users) {
+          var li=jQuery('<li class="onlineUsers"></li>');
+          li.text(users[user]);
+          jQuery('.listusers').append(li);
+        }
+        var roomH=jQuery('<h1 id="roomH"></h1>');
+        roomH.text(room);
+        jQuery('#titlePane').append(roomH);
       }
     });
 
@@ -27,8 +33,12 @@
       displayMsg(msg.from,msg.message);
     });
 
-    socket.on('bdcstjoin',(msg) => {
+    socket.on('bdcstjoin',(msg,user) => {
       displayMsg(msg.from,msg.message);
+      var li=jQuery('<li class="onlineUsers"></li>');
+      li.text(user);
+
+      jQuery('.listusers').append(li);
     });
 
     var displayMsg=function (from,message) {
@@ -86,9 +96,12 @@
    jQuery('#msg-form').on('submit',function (e) {
     e.preventDefault();
 
+    var room=jQuery('[id=roomH]').html();
+
     socket.emit('msgCreated',{
       from:'Client',
-      message: jQuery('[name=message]').val()
+      message: jQuery('[name=message]').val(),
+      room:room
     });
 
     $('#textbox').val('');
